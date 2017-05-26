@@ -130,10 +130,10 @@ $(function(){
 									news += '<td style="width:150px;"><img style="width:150px;" src="' + data[ii].image_url + '" alt="' + data[ii].image_comment +'"  onerror="ChangeImg(this);"/></td>';
 									news += '<td valign="top">';
 										news += '<table>';
-										news += '<tr><td style="width:700px;"><strong><font size="6">' + ConvertUnicodeCharacter(data[ii].title) + '</font></strong></td></tr>';
-										news += '<tr><td style="width:700px;"><font size=4">' + ConvertUnicodeCharacter(data[ii].sub_title) + '</font></td></tr>';
-										news += '<tr><td style="width:700px;">' + ConvertUnicodeCharacter(data[ii].sub_summary) + '</td></tr>';
-										news += '<tr><td style="width:700px;">' + ConvertUnicodeCharacter(data[ii].summary) + '</td></tr>';
+										news += '<tr><td style="width:700px;"><strong><font size="6">' + utf8_encode(data[ii].title) + '</font></strong></td></tr>';
+										news += '<tr><td style="width:700px;"><font size=4">' + utf8_encode(data[ii].sub_title) + '</font></td></tr>';
+										news += '<tr><td style="width:700px;">' + utf8_encode(data[ii].sub_summary) + '</td></tr>';
+										news += '<tr><td style="width:700px;">' + utf8_encode(data[ii].summary) + '</td></tr>';
 										news += '</table>';
 									news += '</td>';
 								news += '</tr>';
