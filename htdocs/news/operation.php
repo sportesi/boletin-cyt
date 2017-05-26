@@ -188,8 +188,8 @@ function GetNews($dbSetting)
 									);		
 				$count++;
 			}
-			var_dump($result);
-			echo  json_encode($result);
+			var_dump(json_encode($result));
+			echo json_encode($result);
 			
 	   }
 	   catch (Exception $e)
