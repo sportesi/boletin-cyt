@@ -189,7 +189,7 @@ function GetNews($dbSetting)
 									);		
 			}
 			
-			echo json_encode(utf8_encode($result));
+			echo json_encode(utf8_decode($result));
 			
 	   }
 	   catch (Exception $e)
