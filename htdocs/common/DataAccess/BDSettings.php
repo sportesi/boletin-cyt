@@ -22,6 +22,8 @@ class DBSetting
 		
 		mysql_select_db($this->_dbInformation->GetDataBase(), $connection);
 		
+		mysql_set_charset('utf8', $connection);
+		
 		$this->_dbConnection = 	$connection;
 	}
 	
