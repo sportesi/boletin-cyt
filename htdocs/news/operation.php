@@ -190,7 +190,9 @@ function GetNews($dbSetting)
 			}
 			
 			echo json_encode($result);
-			
+			if (json_last_error()) {
+				echo json_last_error();
+			}
 	   }
 	   catch (Exception $e)
 	   {
