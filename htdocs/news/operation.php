@@ -162,9 +162,9 @@ function GetNews($dbSetting)
 			 
 			$rs = $dbSetting->ExecuteQuery($query);
 			
-			$count = 0;
+			$result = array();
 			while ($row = mysql_fetch_assoc($rs)) {
-				$result[$count] = array("id" => $row["id"], 
+				$result[] = array("id" => $row["id"], 
 									"user_id" => $row["user_id"] ,
 									"fullname" => $row["fullname"], 
 									"campus_id" => $row["campus_id"], 
@@ -186,8 +186,8 @@ function GetNews($dbSetting)
 									"link_3"=>$row["link_3"],
 									"date"=>$row["date"]
 									);		
-				$count++;
 			}
+
 			var_dump(json_encode($result));
 			echo json_encode($result);
 			
