@@ -189,7 +189,7 @@ function GetNews($dbSetting)
 									);		
 			}
 			
-			echo json_encode($result);
+			echo json_encode(utf8_encode($result));
 			echo json_last_error();
 			
 	   }
