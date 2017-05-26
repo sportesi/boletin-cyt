@@ -163,7 +163,7 @@ function GetNews($dbSetting)
 			$rs = $dbSetting->ExecuteQuery($query);
 			
 			while ($row = mysql_fetch_assoc($rs)) {
-				$result[$x] = array("id" => $row["id"], 
+				$result[] = array("id" => $row["id"], 
 									"user_id" => $row["user_id"] ,
 									"fullname" => $row["fullname"], 
 									"campus_id" => $row["campus_id"], 
