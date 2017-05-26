@@ -162,30 +162,30 @@ function GetNews($dbSetting)
 			 
 			$rs = $dbSetting->ExecuteQuery($query);
 			
-			$result = array();
+			$result = "";
 			while ($row = mysql_fetch_assoc($rs)) {
-				$result[] = array("id" => $row["id"], 
-									"user_id" => $row["user_id"] ,
-									"fullname" => $row["fullname"], 
-									"campus_id" => $row["campus_id"], 
-									"campus" => $row["campus"],
-									"year_coursed" => $row["year_coursed"],
-									"turn_id" => $row["turn_id"],
-									"turn" => $row["turn"],
-									"comission" => $row["comission"],
-									"title" => $row["title"],
-									"sub_title" => $row["sub_title"],
-									"summary"=>$row["summary"],
-									"sub_summary"=>$row["sub_summary"],
-									"image_url" => $row["image_url"],
-									"image_comment" => $row["image_comment"],
-									"category_id" => $row["category_id"],
-									"category"=> $row["category"],
-									"link_1"=>$row["link_1"],
-									"link_2"=>$row["link_2"],
-									"link_3"=>$row["link_3"],
-									"date"=>$row["date"]
-									);		
+				$result .= json_encode(array("id" => $row["id"], 
+													"user_id" => $row["user_id"] ,
+													"fullname" => $row["fullname"], 
+													"campus_id" => $row["campus_id"], 
+													"campus" => $row["campus"],
+													"year_coursed" => $row["year_coursed"],
+													"turn_id" => $row["turn_id"],
+													"turn" => $row["turn"],
+													"comission" => $row["comission"],
+													"title" => $row["title"],
+													"sub_title" => $row["sub_title"],
+													"summary"=>$row["summary"],
+													"sub_summary"=>$row["sub_summary"],
+													"image_url" => $row["image_url"],
+													"image_comment" => $row["image_comment"],
+													"category_id" => $row["category_id"],
+													"category"=> $row["category"],
+													"link_1"=>$row["link_1"],
+													"link_2"=>$row["link_2"],
+													"link_3"=>$row["link_3"],
+													"date"=>$row["date"]
+													));		
 			}
 
 			var_dump($result);
