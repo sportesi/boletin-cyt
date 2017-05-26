@@ -196,7 +196,7 @@ function GetNews($dbSetting)
 	   }
 	   catch (Exception $e)
 	   {
-		  echo $e;
+		  var_dump($e);
 	   }	
 }
 
