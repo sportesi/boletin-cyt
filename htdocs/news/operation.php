@@ -189,8 +189,6 @@ function GetNews($dbSetting)
 									);		
 			}
 			
-			var_dump($result);
-
 			echo json_encode($result);
 			
 	   }
