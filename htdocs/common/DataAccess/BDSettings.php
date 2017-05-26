@@ -22,6 +22,7 @@ class DBSetting
 		
 		mysql_select_db($this->_dbInformation->GetDataBase(), $connection);
 		
+		
 		$this->_dbConnection = 	$connection;
 	}
 	
