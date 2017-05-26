@@ -188,7 +188,7 @@ function GetNews($dbSetting)
 									"date"=>$row["date"]
 									);		
 			}
-			var_dump($result);
+			
 			echo json_encode($result);
 			
 	   }
