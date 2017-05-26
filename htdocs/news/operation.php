@@ -160,6 +160,8 @@ function GetNews($dbSetting)
 				$query= $query . " LIMIT " .$offset . " , " .$pageperview . " ";
 			}
 			 
+			$dbSetting->ExecuteQuery('SET CHARACTER SET utf8');
+
 			$rs = $dbSetting->ExecuteQuery($query);
 			
 			for ($x = 0, $numrows = mysql_num_rows($rs); $x < $numrows; $x++) {
@@ -194,7 +196,7 @@ function GetNews($dbSetting)
 	   }
 	   catch (Exception $e)
 	   {
-		  var_dump($e);
+		  echo $e;
 	   }	
 }
 
