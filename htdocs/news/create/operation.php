@@ -4,7 +4,7 @@
   define('__ROOT__', $_SERVER['DOCUMENT_ROOT']);
   
   require_once(__ROOT__.'/common/session/Session.php'); 
-  require_once(__ROOT__.'/common/dataAccess/DBSecurityConnections.php');
+  require_once(__ROOT__.'/common/DataAccess/DBSecurityConnections.php');
 
   define('__QUERY_INSERT_NEWS__', "INSERT INTO 
   										  News(

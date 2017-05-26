@@ -2,7 +2,7 @@
   //Important need to be defined in the top page required pages
   define('__ROOT__', $_SERVER['DOCUMENT_ROOT']);
    
-  require_once(__ROOT__.'/common/dataAccess/DBSecurityConnections.php');
+  require_once(__ROOT__.'/common/DataAccess/DBSecurityConnections.php');
   
   //Queries
   define('__QUERY_GET_ALL_CAMPUS_ORDER_BY_NAME__', 'SELECT * 
