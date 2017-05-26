@@ -165,27 +165,27 @@ function GetNews($dbSetting)
 			for ($x = 0, $numrows = mysql_num_rows($rs); $x < $numrows; $x++) {
 				$row = mysql_fetch_assoc($rs);
 		    
-				$result[$x] = array("id" => utf8_encode($row["id"]), 
-									"user_id" => utf8_encode($row["user_id"]) ,
-									"fullname" => utf8_encode($row["fullname"]), 
-									"campus_id" => utf8_encode($row["campus_id"]), 
-									"campus" => utf8_encode($row["campus"]),
-									"year_coursed" => utf8_encode($row["year_coursed"]),
-									"turn_id" => utf8_encode($row["turn_id"]),
-									"turn" => utf8_encode($row["turn"]),
-									"comission" => utf8_encode($row["comission"]),
-									"title" => utf8_encode($row["title"]),
-									"sub_title" => utf8_encode($row["sub_title"]),
-									"summary"=>utf8_encode($row["summary"]),
-									"sub_summary"=>utf8_encode($row["sub_summary"]),
-									"image_url" => utf8_encode($row["image_url"]),
-									"image_comment" => utf8_encode($row["image_comment"]),
-									"category_id" => utf8_encode($row["category_id"]),
-									"category"=> utf8_encode($row["category"]),
-									"link_1"=>utf8_encode($row["link_1"]),
-									"link_2"=>utf8_encode($row["link_2"]),
-									"link_3"=>utf8_encode($row["link_3"]),
-									"date"=>utf8_encode($row["date"])
+				$result[$x] = array("id" => utf8_decode($row["id"]), 
+									"user_id" => utf8_decode($row["user_id"]) ,
+									"fullname" => utf8_decode($row["fullname"]), 
+									"campus_id" => utf8_decode($row["campus_id"]), 
+									"campus" => utf8_decode($row["campus"]),
+									"year_coursed" => utf8_decode($row["year_coursed"]),
+									"turn_id" => utf8_decode($row["turn_id"]),
+									"turn" => utf8_decode($row["turn"]),
+									"comission" => utf8_decode($row["comission"]),
+									"title" => utf8_decode($row["title"]),
+									"sub_title" => utf8_decode($row["sub_title"]),
+									"summary"=>utf8_decode($row["summary"]),
+									"sub_summary"=>utf8_decode($row["sub_summary"]),
+									"image_url" => utf8_decode($row["image_url"]),
+									"image_comment" => utf8_decode($row["image_comment"]),
+									"category_id" => utf8_decode($row["category_id"]),
+									"category"=> utf8_decode($row["category"]),
+									"link_1"=>utf8_decode($row["link_1"]),
+									"link_2"=>utf8_decode($row["link_2"]),
+									"link_3"=>utf8_decode($row["link_3"]),
+									"date"=>utf8_decode($row["date"])
 									);		
 			}
 			
