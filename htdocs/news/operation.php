@@ -165,7 +165,7 @@ function GetNews($dbSetting)
 			$rs = $dbSetting->ExecuteQuery($query);
 			
 			for ($x = 0, $numrows = mysql_num_rows($rs); $x < $numrows; $x++) {
-				$row = mysql_fetch_assoc($rs);
+				$row = array_map('htmlentities', mysql_fetch_assoc($rs));
 		    
 				$result[$x] = array("id" => $row["id"], 
 									"user_id" => $row["user_id"] ,
