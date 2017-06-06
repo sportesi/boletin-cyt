@@ -48,7 +48,7 @@
 						<table>
 							<tr valign="top">
 								<td style="width:720px; text-align: left;">
-									<h1>Electromagnetismo - Estado Sólido</h1>
+									<h1>BOLETÍN CIENTÍFICIO - TECNOLÓGICO</h1>
 									<div id="news" style="width:705px;">						
 									</div>
 									</td>
