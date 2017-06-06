@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+    depends_on:
+      - db  
+
+  db:
+    image: mysql:5.7.18
+    ports:
+      - "3306:3306"
+    networks:
+      - webnet
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ees_db
+      - MYSQL_USER=ees_uai
+      - MYSQL_PASSWORD=QERA7854
+
+networks:
+  webnet:
