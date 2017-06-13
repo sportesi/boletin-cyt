@@ -5,26 +5,11 @@ define('__ROOT__', $_SERVER['DOCUMENT_ROOT']);
 require_once(__ROOT__ . '/common/session/Session.php');
 require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
 
-define('__QUERY_GET_NEWS_BY_ID__', "SELECT link_1,
-  											link_2,
-  											link_3
-  									FROM news 
-  									WHERE id = [0]");
+define('__QUERY_GET_NEWS_BY_ID__', "SELECT link_1, link_2, link_3 FROM news WHERE id = [0]");
 
-define('__QUERY_INSERT_STADISTIC_FOR_NEWS__', "INSERT INTO statistic
-  															(news_id,
-  															ip,
-  															date
-  															)
-  												VALUES([0],'[1]',[2])");
+define('__QUERY_INSERT_STADISTIC_FOR_NEWS__', "INSERT INTO statistic (news_id, ip,date) VALUES([0],'[1]',[2])");
 
-
-define('__QUERY_CHECK_DAY_INSERT_INTO_STADISTIC__', "SELECT * 
- 													 FROM statistic
- 													 WHERE ip = '[0]'
- 													 	   AND DATE(date)=CURDATE()
- 													 	   AND news_id = [1]");
-
+define('__QUERY_CHECK_DAY_INSERT_INTO_STADISTIC__', "SELECT * FROM statistic WHERE ip = '[0]' AND DATE(date)=CURDATE() AND news_id = [1]");
 
 ?>
 
@@ -72,7 +57,7 @@ $current_link = "";
 
 try {
     $news_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "news_id"));
-    $lind_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "lind_id"));
+    $link_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "link"));
 
     $query = __QUERY_GET_NEWS_BY_ID__;
     $query = $dbSetting->ReplaceParameter($query, '[0]', $news_id);

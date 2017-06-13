@@ -147,15 +147,15 @@ $(function(){
 													news += '<td style="width:20%;"><strong>Links de referencia:</strong> &nbsp;&nbsp;&nbsp;</td>';
 													if(data[ii].link_1.length >0)
 													{
-														news += '<td style="width:20%;text-align: left;"><a href=' + data[ii].id + '"/news/preview/preview.php?news_id=&link=1" target="_blank"><strong>Nota Completa </strong>&nbsp;&nbsp;&nbsp;</a></td>';
+														news += '<td style="width:20%;text-align: left;"><a href="/news/preview/preview.php?news_id=' + data[ii].id + '&link=1" target="_blank"><strong>Nota Completa </strong>&nbsp;&nbsp;&nbsp;</a></td>';
 													}
 													if(data[ii].link_2.length >0)
 													{
-														news += '<td style="width:20%;text-align: left;"><a href=' + data[ii].id + '"/news/preview/preview.php?news_id=&link=2" target="_blank"><strong>Relacionado</strong> &nbsp;&nbsp;&nbsp;</a></td>';
+														news += '<td style="width:20%;text-align: left;"><a href="/news/preview/preview.php?news_id=' + data[ii].id + '&link=2" target="_blank"><strong>Relacionado</strong> &nbsp;&nbsp;&nbsp;</a></td>';
 													}
 													if(data[ii].link_3.length >0)
 													{
-														news += '<td style="width:20%;text-align: left;"><a href=' + data[ii].id + '"/news/preview/preview.php?news_id=&link=3" target="_blank"><strong>Formato PDF </strong> &nbsp;&nbsp;&nbsp;</a></td>';
+														news += '<td style="width:20%;text-align: left;"><a href="/news/preview/preview.php?news_id=' + data[ii].id + '&link=3" target="_blank"><strong>Formato PDF </strong> &nbsp;&nbsp;&nbsp;</a></td>';
 													}
 													news += '<td style="width:100%;"></td>';
 												news += '</tr>';
