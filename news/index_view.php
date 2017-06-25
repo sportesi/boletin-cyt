@@ -6,11 +6,11 @@ $news_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "id"));
 $offset = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "offset"));
 $pageperview = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "pageperview"));
 
-$query = "SELECT N.id,N.user_id, CONCAT_WS(',',U.firstname,NULL,U.lastname) 'fullname', C.id 'campus_id', C.name 'campus', U.year 'year_coursed', T.id 'turn_id', T.name 'turn', U.comission 'comission', N.title, N.sub_title, N.summary, N.sub_summary, N.image_url, N.image_comment, N.category_id, Cat.name 'category', N.link_1, N.link_2, N.link_3, N.date FROM news N, user U, category Cat, campus C, turn T WHERE N.category_id = Cat.id AND N.user_id = U.id AND U.campus_id = C.id AND U.turn_id = T.id";
+$query = "SELECT N.id,N.user_id, CONCAT_WS(', ',U.firstname,U.lastname) 'fullname', C.id 'campus_id', C.name 'campus', U.year 'year_coursed', T.id 'turn_id', T.name 'turn', U.comission 'comission', N.title, N.sub_title, N.summary, N.sub_summary, N.image_url, N.image_comment, N.category_id, Cat.name 'category', N.link_1, N.link_2, N.link_3, N.date FROM news N, user U, category Cat, campus C, turn T WHERE N.category_id = Cat.id AND N.user_id = U.id AND U.campus_id = C.id AND U.turn_id = T.id";
 
-if ($category_id != '') { $query = $query . " AND N.category_id =" . $category_id; }
-if ($user_id != '') { $query = $query . " AND N.user_id=" . $user_id; }
-if ($news_id != '') { $query = $query . " AND N.id=" . $news_id; }
+if ($category_id != '') { $query = $query . " AND N.category_id = " . $category_id; }
+if ($user_id != '') { $query = $query . " AND N.user_id = " . $user_id; }
+if ($news_id != '') { $query = $query . " AND N.id = " . $news_id; }
 
 $query = $query . " ORDER BY N.date DESC";
 $query = $query . " LIMIT " . ($offset ?: 0) . " , " . ($pageperview ?: 10) . " ";
@@ -48,85 +48,63 @@ for ($x = 0, $numrows = mysql_num_rows($rs); $x < $numrows; $x++) {
 ?>
 
 <?php foreach ($result as $data) { ?>
-  <table>
-    <tr>
-      <td collspan="2" style="width: 2px; background-color: black;"> </td>
-      <td>
-        <table style="width:100%;" border="0" cellspacing="0" cellpadding="0">
-          <td>
-            <tr valign="top">
-              <td style="width:150px;">
-                <img style="width:150px;"
-                src="<?php echo $data['image_url']; ?>"
-                alt="<?php echo $data['image_comment']; ?>"
-                onerror="ChangeImg(this);"/>
-              </td>
-              <td valign="top">
-                <table>
-                  <tr><td style="width:700px;"><strong><font size="6"><?php echo $data['title']; ?></font></strong></td></tr>
-                  <tr><td style="width:700px;"><font size="4"><?php echo $data['sub_title']; ?></font></td></tr>
-                  <tr><td style="width:700px;"><?php echo $data['sub_summary']; ?></td></tr>
-                  <tr><td style="width:700px;"><?php echo $data['summary']; ?></td></tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <table style="width:700px;" border="0" cellspacing="0" cellpadding="0">
-            <tr style="background: #dcdad5">
-              <td>
-                <table border="0"  style="width:700px;" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td style="width:20%;"><strong>Links de referencia:</strong> &nbsp;&nbsp;&nbsp;</td>
-                    <td style="width:20%;text-align: left;">
-                      <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=1" target="_blank">
-                        <strong>Nota Completa </strong>&nbsp;&nbsp;&nbsp;
-                      </a>
-                    </td>
-                    <td style="width:20%;text-align: left;">
-                      <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=2" target="_blank">
-                        <strong>Relacionado</strong> &nbsp;&nbsp;&nbsp;
-                      </a>
-                    </td>
-                    <td style="width:20%;text-align: left;">
-                      <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=3" target="_blank">
-                        <strong>Formato PDF </strong> &nbsp;&nbsp;&nbsp;
-                      </a>
-                    </td>
-                    <td style="width:100%;"></td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <table border="0"  style="width:700px;" cellspacing="0" cellpadding="0">
-              <tr style="background: #d0e5b3">
-                <td>
-                  <strong>Autor:</strong>&nbsp;
-                  <a href="user/statistics/index.php?id=<?php echo $data['user_id']; ?>">
-                    <?php echo $data['fullname'];  ?>
-                  </a> &nbsp; &nbsp; &nbsp;
-                </td>
-                <td> <strong>Año:</strong>&nbsp; <?php echo $data['year_coursed']; ?> &nbsp; &nbsp; &nbsp;</td>
-                <td> <strong>Localización:</strong>&nbsp; <?php echo $data['campus']; ?> &nbsp; &nbsp; &nbsp;</td>
-                <td> <strong>Turno:</strong>&nbsp; <?php echo $data['turn']; ?> &nbsp; &nbsp; &nbsp;</td>
-                <td ><strong>Comisión:</strong>&nbsp; <?php echo $data['comission']; ?></td>
-                <td ><strong>Fecha:</strong>&nbsp; <?php echo $data['date']; ?></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-    <td collspan="2" style="width: 2px; background-color: #D8D8D8;">
-    </td>
-  </tr>
-</table>
 
-<br/>
-<br/>
+  <div class="panel panel-info">
+    <div class="panel-body no-padding">
+      <div class="col-md-3">
+        <img class="img-thumbnail" src="<?php echo $data['image_url']; ?>" onerror="ChangeImg(this);"/>
+      </div>
+      <div class="col-md-9">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <b> <?php echo htmlentities($data['title'], ENT_QUOTES, 'utf-8'); ?> </b>
+          </div>
+          <div class="panel-body">
+            <p>
+              <?php echo htmlentities($data['sub_summary'], ENT_QUOTES, 'utf-8'); ?>
+            </p>
+            <p>
+              <?php echo htmlentities($data['summary'], ENT_QUOTES, 'utf-8'); ?>
+            </p>
+            <div class="text-center">
+              <?php if (!empty($data['link_1'])): ?>
+                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=1" class="btn btn-info btn-sm">Nota Completa</a>
+              <?php endif; ?>
+              <?php if (!empty($data['link_2'])): ?>
+                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=2" class="btn btn-info btn-sm">Relacionado</a>
+              <?php endif; ?>
+              <?php if (!empty($data['link_3'])): ?>
+                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=3" class="btn btn-info btn-sm">Formato PDF</a>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-md-5">
+          <strong>Autor:&nbsp;</strong>
+          <a href="/user/statistics/index.php?id=<?php echo $data['user_id']; ?>">
+            <?php echo htmlentities($data['fullname'], ENT_QUOTES, 'utf-8'); ?>
+            (
+            <?php echo htmlentities($data['year_coursed'], ENT_QUOTES, 'utf-8'); ?>
+            <?php echo htmlentities($data['comission'], ENT_QUOTES, 'utf-8'); ?>
+            -
+            <?php echo htmlentities($data['turn'], ENT_QUOTES, 'utf-8'); ?>
+            )
+          </a>
+        </div>
+        <div class="col-md-3 text-center">
+          <strong>Sede:&nbsp;</strong>
+          <?php echo htmlentities($data['campus'], ENT_QUOTES, 'utf-8'); ?>
+        </div>
+        <div class="col-md-4 text-right">
+          <strong>Fecha:&nbsp;</strong>
+          <?php echo htmlentities($data['date'], ENT_QUOTES, 'utf-8'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <?php } ?>

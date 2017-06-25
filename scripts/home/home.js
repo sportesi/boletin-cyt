@@ -71,13 +71,14 @@ $(function(){
 
 	$.getJSON("content/content.php?operation=category", function(data) {
 
-		var links = '';
-		links += '<table>';
+		var links = '<div class="list-group">';
 		for (var ii = 0; ii < data.length; ii++)
 		{
-			links += '<tr><td><a href="index.php?category=' + data[ii].id +  '" class="tag"><span class="tag_name tag_font">' + data[ii].name + '</span><span class="tag_count tag_font">' + data[ii].NewsCount + '</span></a> </tr></td>';
+			links += '<a href="index.php?category=' + data[ii].id +  '" class="list-group-item">';
+			links += data[ii].name + ' <span class="badge">'+data[ii].NewsCount+'</span>';
+			links += '</a>';
 		}
-		links += '</table>';
+		links += '</div>';
 
 		$("#categories").html(links);
 

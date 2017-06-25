@@ -5,21 +5,21 @@ define('__ROOT__', $_SERVER['DOCUMENT_ROOT']);
 require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
 
 //Queries
-define('__QUERY_GET_ALL_CAMPUS_ORDER_BY_NAME__', 'SELECT * 
-  													FROM campus 
+define('__QUERY_GET_ALL_CAMPUS_ORDER_BY_NAME__', 'SELECT *
+  													FROM campus
   													ORDER BY Name ASC');
 
-define('__QUERY_GET_ALL_TURNS__', 'SELECT * 
+define('__QUERY_GET_ALL_TURNS__', 'SELECT *
   									FROM turn');
 
-define('__QUERY_GET_ALL_CATEGORIES__', 'SELECT C.*, (SELECT COUNT(*) FROM news WHERE category_id = C.id) NewsCount 
+define('__QUERY_GET_ALL_CATEGORIES__', 'SELECT C.*, (SELECT COUNT(*) FROM news WHERE category_id = C.id) NewsCount
   										  FROM category C
-  										  WHERE C.status = 1 
-  										  		AND C.deleted = 0 
-  										  ORDER BY C.name ASC');
+  										  WHERE C.status = 1
+  										  		AND C.deleted = 0
+  										  ORDER BY NewsCount DESC');
 
-define('__QUERY_GET_ALL_PERMISSIONS_ORDER_BY_NAME__', 'SELECT * 
-  										  				 FROM permission 
+define('__QUERY_GET_ALL_PERMISSIONS_ORDER_BY_NAME__', 'SELECT *
+  										  				 FROM permission
   										  				 ORDER BY Name ASC');
 
 switch ($_GET['operation']) {

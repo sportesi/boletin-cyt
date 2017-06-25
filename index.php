@@ -27,7 +27,7 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
   <link rel="stylesheet" type="text/css" href="style/css/general.css" media="screen"/>
   <link rel="stylesheet" type="text/css" href="controls/menu/ddsmoothmenu.css"/>
   <link rel="stylesheet" type="text/css" href="controls/menu/ddsmoothmenu-v.css"/>
-  <link rel="stylesheet" type="text/css" href="controls/categories/css/categories.css"/>
+  <!-- <link rel="stylesheet" type="text/css" href="controls/categories/css/categories.css"/> -->
 
 </head>
 <body>
@@ -35,37 +35,37 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
     <div id="smoothmenu1" class="ddsmoothmenu"> </div>
   </div>
 
-  <center>
-    <div>
-      <table>
-        <tr valign="top">
-          <td style="width:720px; text-align: left;">
-            <h1>BOLETÍN CIENTÍFICIO - TECNOLÓGICO</h1>
-            <div id="news" style="width:705px;">
-              <?php require_once 'news/index_view_new.php'; ?>
-            </div>
-          </td>
-          <td style="vertical-align: top; text-align: left;">
-            <img src="/style/images/uai-logo.gif" id="Logo UAI"/><br/>
-            <img src="/style/images/home_boleting.jpg" id="boleting"/><br/>
-            <div style="text-decoration: underline;">
-              <a href="/files/criterios_para_publicar.doc">
-                <h2 style="padding: 10px; background: lightgrey; border-radius: 5px; box-shadow: 0px 0px 5px grey; ">Criterios para publicar</h2>
-              </a>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h2>Boletín Científicio - Tecnológico</h2>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div id="news">
+          <?php require_once 'news/index_view.php'; ?>
+        </div>
+        <div id="pages_numbers"></div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              <img src="/style/images/uai-logo.gif" id="Logo UAI"/><br/>
+              <img src="/style/images/home_boleting.jpg" id="boleting"/><br/>
+            </p>
+          </div>
+          <div class="col-md-12">
+            <a href="/files/criterios_para_publicar.doc" class="btn btn-primary"> Criterios para publicar </a>
+          </div>
+          <div class="col-md-12">
             <div><h2><strong>Categorias</strong></h2></div>
-            <div id="categories"></div>
-            <br/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div id="pages_numbers"></div>
-          </td>
-          <td></td>
-        </tr>
-      </table>
+            <div id="categories" class="text-left"></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </center>
+  </div>
 </body>
 </html>
