@@ -40,7 +40,7 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
           <td style="width:720px; text-align: left;">
             <h1>BOLETÍN CIENTÍFICIO - TECNOLÓGICO</h1>
             <div id="news" style="width:705px;">
-              <?php require_once 'news/index_view.php'; ?>
+              <?php require_once 'news/index_view_new.php'; ?>
             </div>
           </td>
           <td style="vertical-align: top; text-align: left;">

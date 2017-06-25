@@ -1,4 +1,5 @@
-.idea/
-.phpintel/
-vendor/
+/.idea/
+/.phpintel/
+/vendor/
 composer.lock
+/node_modules/
