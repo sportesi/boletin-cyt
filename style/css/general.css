@@ -191,8 +191,8 @@ h1{
     border:1px solid #bababa;
     cursor: default;
 }
-         
-#paging 
+
+#paging
 {
 	display: table-cell;
     width: 100%;
@@ -318,4 +318,18 @@ h1{
 .NewsBar a:hover
 {
 	text-decoration: underline;
+}
+
+/*** Bootstrap Customization ***/
+
+.panel-body.no-padding {
+	padding: 15px 0px !important;
+}
+
+.panel-heading {
+	font-size: 11pt;
+}
+
+.panel .panel {
+	margin: 0 !important;
 }

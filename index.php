@@ -19,9 +19,11 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
 
   <title>EES - UAI - BOLETIN</title>
 
-  <script type="text/javascript" language="JavaScript" src="scripts/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="JavaScript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js" > </script>
   <script type="text/javascript" language="JavaScript" src="controls/menu/ddsmoothmenu.js"></script>
   <script type="text/javascript" language="JavaScript" src="/scripts/home/home.js"></script>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style/css/general.css" media="screen"/>
   <link rel="stylesheet" type="text/css" href="controls/menu/ddsmoothmenu.css"/>
   <link rel="stylesheet" type="text/css" href="controls/menu/ddsmoothmenu-v.css"/>
