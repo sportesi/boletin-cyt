@@ -13,7 +13,7 @@ if ($user_id != '') { $query = $query . " AND N.user_id = " . $user_id; }
 if ($news_id != '') { $query = $query . " AND N.id = " . $news_id; }
 
 $query = $query . " ORDER BY N.date DESC";
-$query = $query . " LIMIT " . ($offset ?: 0) . " , " . ($pageperview ?: 10) . " ";
+$query = $query . " LIMIT " . ($offset ?: 0) . " , " . ($pageperview ?: 3) . " ";
 $rs = $dbSetting->ExecuteQuery($query);
 $result = array();
 

@@ -21,24 +21,18 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
 
   <script type="text/javascript" language="JavaScript" src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js" > </script>
-  <script type="text/javascript" language="JavaScript" src="controls/menu/ddsmoothmenu.js"></script>
   <script type="text/javascript" language="JavaScript" src="/scripts/home/home.js"></script>
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style/css/general.css" media="screen"/>
-  <link rel="stylesheet" type="text/css" href="controls/menu/ddsmoothmenu.css"/>
-  <link rel="stylesheet" type="text/css" href="controls/menu/ddsmoothmenu-v.css"/>
-  <!-- <link rel="stylesheet" type="text/css" href="controls/categories/css/categories.css"/> -->
 
 </head>
 <body>
-  <div style="position:relative;">
-    <div id="smoothmenu1" class="ddsmoothmenu"> </div>
-  </div>
 
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="page-header">
+          <?php require_once 'controls/menu/menu_nav.php'; ?>
           <h2>Boletín Científicio - Tecnológico</h2>
         </div>
       </div>
@@ -46,22 +40,39 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
         <div id="news">
           <?php require_once 'news/index_view.php'; ?>
         </div>
-        <div id="pages_numbers"></div>
+        <nav aria-label="...">
+          <ul class="pager">
+            <li class="previous <?php echo ($offset ?: "disabled") ?>">
+              <a href="<?php echo !$offset ? "#" : '/?offset=' . ($offset - 3); ?>">
+                <span aria-hidden="true">&larr;</span> Anterior
+              </a>
+            </li>
+            <li class="next <?php echo (sizeof($result) ?: "disabled") ?>">
+              <a href="<?php echo !sizeof($result) ? "" : '/?offset=' . ($offset + 3); ?>">
+                Siguiente <span aria-hidden="true">&rarr;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
       <div class="col-md-3 text-center">
-        <div class="row">
-          <div class="col-md-12">
-            <p>
-              <img src="/style/images/uai-logo.gif" id="Logo UAI"/><br/>
-              <img src="/style/images/home_boleting.jpg" id="boleting"/><br/>
-            </p>
-          </div>
-          <div class="col-md-12">
-            <a href="/files/criterios_para_publicar.doc" class="btn btn-primary"> Criterios para publicar </a>
-          </div>
-          <div class="col-md-12">
-            <div><h2><strong>Categorias</strong></h2></div>
-            <div id="categories" class="text-left"></div>
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12">
+                <p>
+                  <img src="/style/images/uai-logo.gif" id="Logo UAI"/><br/>
+                  <img src="/style/images/home_boleting.jpg" id="boleting"/><br/>
+                </p>
+              </div>
+              <div class="col-md-12">
+                <a href="/files/criterios_para_publicar.doc" class="btn btn-primary"> Criterios para publicar </a>
+              </div>
+              <div class="col-md-12">
+                <div><h2><strong>Categorias</strong></h2></div>
+                <div id="categories" class="text-left"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
