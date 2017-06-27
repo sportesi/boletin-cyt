@@ -1,0 +1,23 @@
+{
+  "name": "cytlegacy-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/sportesi/cytlegacy.git"
+  },
+  "author": "Sebastian Portesi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/sportesi/cytlegacy/issues"
+  },
+  "homepage": "https://gitlab.com/sportesi/cytlegacy#README",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  }
+}

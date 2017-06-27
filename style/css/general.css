@@ -1,7 +1,11 @@
 @CHARSET "UTF-8";
 /******* GENERAL SET *******/
 body{
-	background: #fff;
+	background-image: url(/style/images/bg.png);
+	background-position: left top;
+	background-size: auto;
+	background-repeat: repeat;
+	background-attachment: scroll;
 	font-size: 12px;
 	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	margin:0pt;
@@ -24,13 +28,13 @@ strong{
 }
 
 input {
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid #A9A8AB;
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px solid #A9A8AB;
 }
 
 textarea {
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid #A9A8AB;
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px solid #A9A8AB;
 }
 
 select
@@ -38,12 +42,8 @@ select
 	border: 1px solid #A9A8AB;
 }
 /******* GENERAL RESET *******/
-h1{
-	font-weight: 700;
-	font-size: 18px;
-	border-bottom: 1px dotted #6b9ef1;
+.page-header h2 {
 	color: #5f95ef;
-	margin-bottom: 1em;
 }
 /******* LOGO *******/
 #logo{
@@ -142,30 +142,30 @@ h1{
 
 .GeneralButtons
 {
-    border: 1px solid #3e9533;
-    border-bottom-color: #3e9533;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 15px;
-    padding: 5px 8px 5px;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 #2e63a5;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -moz-box-shadow: 0 0 1px #ddd;
-    -webkit-box-shadow: 0 0 1px #ddd;
-    background: #3e9533;
-    border-bottom-color: #3e9533;
+	border: 1px solid #3e9533;
+	border-bottom-color: #3e9533;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 15px;
+	padding: 5px 8px 5px;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 #2e63a5;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-box-shadow: 0 0 1px #ddd;
+	-webkit-box-shadow: 0 0 1px #ddd;
+	background: #3e9533;
+	border-bottom-color: #3e9533;
 }
 
 .GeneralButtons:hover
 {
-    border: 1px solid #2e63a5;
-    color: #fff;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 #2e63a5;
-    background: #3570b8;
+	border: 1px solid #2e63a5;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 #2e63a5;
+	background: #3570b8;
 }
 
 .ErrorFont
@@ -186,39 +186,39 @@ h1{
 #paging .pagination ul li.inactive,
 #paging .pagination ul li.inactive:hover
 {
-    background-color:#ededed;
-    color:#bababa;
-    border:1px solid #bababa;
-    cursor: default;
+	background-color:#ededed;
+	color:#bababa;
+	border:1px solid #bababa;
+	cursor: default;
 }
-         
-#paging 
+
+#paging
 {
 	display: table-cell;
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #paging .pagination ul li
 {
-   list-style: none;
-   float: left;
-   border: 1px solid #006699;
-   padding: 2px 6px 2px 6px;
-   margin: 0 3px 3px 3px;
-   font-family: arial;
-   font-size: 14px;
-   color: #006699;
-   font-weight: bold;
-   background-color: #f2f2f2;
+	list-style: none;
+	float: left;
+	border: 1px solid #006699;
+	padding: 2px 6px 2px 6px;
+	margin: 0 3px 3px 3px;
+	font-family: arial;
+	font-size: 14px;
+	color: #006699;
+	font-weight: bold;
+	background-color: #f2f2f2;
 }
 
 #paging .pagination ul li:hover
 {
-    color: #fff;
-    background-color: #006699;
-    cursor: pointer;
+	color: #fff;
+	background-color: #006699;
+	cursor: pointer;
 }
 
 .NewsBar
@@ -318,4 +318,29 @@ h1{
 .NewsBar a:hover
 {
 	text-decoration: underline;
+}
+
+/*** Bootstrap Customization ***/
+
+.panel-body.no-padding {
+	padding: 15px 0px !important;
+}
+
+.panel-heading {
+	font-size: 11pt;
+}
+
+.panel .panel {
+	margin: 0 !important;
+}
+
+#categories table {
+	margin: 0 auto;
+}
+
+.navbar {
+	border-radius: 0 !important;
+}
+.page-header {
+	border-bottom: 1px solid darkgrey !important;
 }
