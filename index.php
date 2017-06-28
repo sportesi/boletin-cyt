@@ -32,18 +32,23 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
 
   <div class="container">
     <div class="row">
+      <!-- Header and Navbar -->
       <div class="col-md-12">
         <div class="page-header">
           <?php require_once 'controls/menu/menu_nav.php'; ?>
           <?php require_once 'controls/header/widget.php'; ?>
         </div>
       </div>
+      <!-- End Header and Navbar -->
+      <!-- News -->
       <div class="col-md-9">
         <div id="news">
           <?php require_once 'news/index_view.php'; ?>
         </div>
         <?php require_once 'controls/php-pagination/widget.php'; ?>
       </div>
+      <!-- End News -->
+      <!-- Sidebar  -->
       <div class="col-md-3 text-center">
         <div class="panel panel-info">
           <div class="panel-body">
@@ -62,6 +67,10 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
           </div>
         </div>
       </div>
+      <!-- End Sidebar -->
+      <!-- Modal Login -->
+      <?php require_once 'login/modal.php'; ?>
+      <!-- End Modal Login -->
     </div>
   </div>
 </body>
