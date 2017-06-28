@@ -70,7 +70,7 @@
           <a href="/login/logout.php" class="btn btn-primary btn-sm navbar-btn">Salir</a>
         <?php else: ?>
           <a href="/user/register/" class="btn btn-success btn-sm navbar-btn">Registrarse</a>
-          <a href="/login/" class="btn btn-primary btn-sm navbar-btn">Ingresar</a>
+          <a href="#" class="btn btn-primary btn-sm navbar-btn" data-toggle="modal" data-target="#modal-login">Ingresar</a>
         <?php endif; ?>
       </div>
     </div><!-- /.navbar-collapse -->
