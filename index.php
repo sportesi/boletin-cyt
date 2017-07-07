@@ -23,9 +23,11 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
   <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js" > </script>
   <script type="text/javascript" language="JavaScript" src="/scripts/home/home.js"></script>
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style/css/general.css" media="screen"/>
 
 </head>
+
 <body>
 
   <div class="container">
@@ -42,14 +44,22 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
         </div>
         <nav aria-label="...">
           <ul class="pager">
+            <?php $category = (!$category_id ? '' : 'category=' . $category_id); ?>
+            <?php if ($offset > 0): ?>
+              <li class="previous">
+                <a href="<?php echo '/' . $category; ?>">
+                  <i class="fa fa-angle-double-left"></i> Inicio
+                </a>
+              </li>
+            <?php endif ?>
             <li class="previous <?php echo ($offset ?: "disabled") ?>">
-              <a href="<?php echo !$offset ? "#" : '/?offset=' . ($offset - 3); ?>">
-                <span aria-hidden="true">&larr;</span> Anterior
+              <a href="<?php echo !$offset ? "#" : '/?'.$category.'&offset=' . ($offset - 3); ?>">
+                <i class="fa fa-angle-left"></i> Anterior
               </a>
             </li>
             <li class="next <?php echo (sizeof($result) ?: "disabled") ?>">
-              <a href="<?php echo !sizeof($result) ? "" : '/?offset=' . ($offset + 3); ?>">
-                Siguiente <span aria-hidden="true">&rarr;</span>
+              <a href="<?php echo !sizeof($result) ? "" : '/?'.$category.'&offset=' . ($offset + 3); ?>">
+                Siguiente <i class="fa fa-angle-right"></i>
               </a>
             </li>
           </ul>
