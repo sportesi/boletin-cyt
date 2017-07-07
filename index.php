@@ -71,6 +71,9 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
       <!-- Modal Login -->
       <?php require_once 'login/modal.php'; ?>
       <!-- End Modal Login -->
+      <!-- Modal Register -->
+      <?php require_once 'user/register/modal.php'; ?>
+      <!-- End Modal Register -->
     </div>
   </div>
 </body>
