@@ -60,33 +60,15 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
         <div id="news">
           <?php require_once 'news/index_view.php'; ?>
         </div>
-        <nav aria-label="...">
-          <ul class="pager">
-            <?php $category = (!$category_id ? '' : 'category=' . $category_id); ?>
-            <?php if ($offset > 0): ?>
-              <li class="previous">
-                <a href="<?php echo '/' . $category; ?>">
-                  <i class="fa fa-angle-double-left"></i> Inicio
-                </a>
-              </li>
-            <?php endif ?>
-            <li class="previous <?php echo ($offset ?: "disabled") ?>">
-              <a href="<?php echo !$offset ? "#" : '/?'.$category.'&offset=' . ($offset - 3); ?>">
-                <i class="fa fa-angle-left"></i> Anterior
-              </a>
-            </li>
-            <li class="next <?php echo (sizeof($result) ?: "disabled") ?>">
-              <a href="<?php echo !sizeof($result) ? "" : '/?'.$category.'&offset=' . ($offset + 3); ?>">
-                Siguiente <i class="fa fa-angle-right"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <?php require_once 'controls/php-pagination/widget.php'; ?>
       </div>
       <div class="col-md-3 text-center">
         <div class="panel panel-info">
           <div class="panel-body">
             <div class="row">
+              <div class="col-md-12">
+                <?php require_once 'controls/search/widget.php'; ?>
+              </div>
               <div class="col-md-12">
                 <a href="/files/criterios_para_publicar.doc" class="btn btn-primary"> Criterios para publicar </a>
               </div>
