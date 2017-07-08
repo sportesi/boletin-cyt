@@ -344,3 +344,8 @@ select
 .page-header {
 	border-bottom: 1px solid darkgrey !important;
 }
+
+.section-header {
+	color: #5f95ef;
+	padding: 0px 15px;
+}

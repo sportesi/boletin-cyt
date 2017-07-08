@@ -2,13 +2,14 @@
 //Important need to be defined in the top page required pages
 define('__ROOT__', $_SERVER['DOCUMENT_ROOT']);
 
-require_once(__ROOT__ . '/common/session/Session.php');
-require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
+require_once __ROOT__ . '/common/session/Session.php';
+require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
 
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
+
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=8"/>
@@ -25,7 +26,6 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style/css/general.css" media="screen"/>
-
 </head>
 
 <body>
@@ -35,7 +35,18 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
       <div class="col-md-12">
         <div class="page-header">
           <?php require_once 'controls/menu/menu_nav.php'; ?>
-          <h2>Boletín Científicio - Tecnológico</h2>
+          <?php 
+            $categoryIdName = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "category"));
+            $categoryName = null;
+            if ($categoryIdName) {
+              $catResult = $dbSetting->ExecuteQuery("SELECT name FROM category where id = $categoryIdName");
+              $categoryName = "Categoría: " . mysql_fetch_assoc($catResult)['name'];
+            }
+          ?>
+          <?php $sectionName = ($categoryName) ?: 'Últimas Noticias'; ?>
+          <div class="section-header">
+            <h4><?php echo $sectionName; ?></h4>
+          </div>
         </div>
       </div>
       <div class="col-md-9">
