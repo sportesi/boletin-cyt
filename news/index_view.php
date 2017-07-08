@@ -5,12 +5,19 @@ $user_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "user_id"))
 $news_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "id"));
 $offset = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "offset"));
 $pageperview = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "pageperview"));
+$search = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "search"));
 
 $query = "SELECT N.id,N.user_id, CONCAT_WS(', ',U.firstname,U.lastname) 'fullname', C.id 'campus_id', C.name 'campus', U.year 'year_coursed', T.id 'turn_id', T.name 'turn', U.comission 'comission', N.title, N.sub_title, N.summary, N.sub_summary, N.image_url, N.image_comment, N.category_id, Cat.name 'category', N.link_1, N.link_2, N.link_3, N.date FROM news N, user U, category Cat, campus C, turn T WHERE N.category_id = Cat.id AND N.user_id = U.id AND U.campus_id = C.id AND U.turn_id = T.id";
 
-if ($category_id != '') { $query = $query . " AND N.category_id = " . $category_id; }
-if ($user_id != '') { $query = $query . " AND N.user_id = " . $user_id; }
-if ($news_id != '') { $query = $query . " AND N.id = " . $news_id; }
+if (!empty($category_id)) { $query = $query . " AND N.category_id = " . $category_id; }
+if (!empty($user_id)) { $query = $query . " AND N.user_id = " . $user_id; }
+if (!empty($news_id)) { $query = $query . " AND N.id = " . $news_id; }
+if (!empty($search)) {
+  $query = $query . " AND (N.title like '%".$search."%'";
+  $query = $query . " OR N.sub_title like '%".$search."%'";
+  $query = $query . " OR N.summary like '%".$search."%'";
+  $query = $query . " OR N.sub_summary like '%".$search."%')";
+}
 
 $query = $query . " ORDER BY N.date DESC";
 $query = $query . " LIMIT " . ($offset ?: 0) . " , " . ($pageperview ?: 3) . " ";
