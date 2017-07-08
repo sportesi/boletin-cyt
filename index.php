@@ -45,7 +45,14 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
           ?>
           <?php $sectionName = ($categoryName) ?: 'Últimas Noticias'; ?>
           <div class="section-header">
-            <h4><?php echo $sectionName; ?></h4>
+            <div class="row">
+              <div class="col-md-9">
+                <h3><?php echo $sectionName; ?></h3>
+              </div>
+              <div class="col-md-3" style="padding-right: 0;">
+                <img src="/style/images/uai-vertical.png" style="width: 100%;" id="Logo UAI"/><br/>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -80,12 +87,6 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
         <div class="panel panel-info">
           <div class="panel-body">
             <div class="row">
-              <div class="col-md-12">
-                <p>
-                  <img src="/style/images/uai-logo.gif" id="Logo UAI"/><br/>
-                  <img src="/style/images/home_boleting.jpg" id="boleting"/><br/>
-                </p>
-              </div>
               <div class="col-md-12">
                 <a href="/files/criterios_para_publicar.doc" class="btn btn-primary"> Criterios para publicar </a>
               </div>
