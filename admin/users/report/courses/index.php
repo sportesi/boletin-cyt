@@ -6,22 +6,7 @@ require_once(__ROOT__ . '/common/session/Session.php');
 require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
 
 //Queries
-define('__QUERY_GET_ALL_COURSE_BY_FILTERS__', "SELECT DISTINCT C.id 'campus_id',
- 																   C.name 'campus',
- 																   U.year 'year_coursed',
- 																   T.id 'turn_id',
- 																   T.name 'turn',
- 																   U.comission 'comission',
- 																   CASE  when MONTH(U.date) > 8 then 2 when MONTH(U.date) > 1 then 1 END 'cuatrimestre',
- 																   YEAR(U.date) year,
- 																   U.date
- 												   FROM user U,
- 												   		turn T,
- 												   		campus C
- 												   WHERE U.turn_id = T.id 
- 												   		 AND U.campus_id = C.id 
- 												   		 AND U.validated = 1 
- 												   		 AND U.permission_id = 1 ");
+define('__QUERY_GET_ALL_COURSE_BY_FILTERS__', "SELECT campus.id 'campus_id', campus.name 'campus', YEAR(date) 'year', turn.id 'turn_id', turn.name 'turn', comission 'comission', CASE WHEN MONTH(user.date) > 8 THEN 2 WHEN MONTH(user.date) > 1 THEN 1 END 'cuatrimestre', user.year 'year_coursed'FROM user INNER JOIN turn ON user.turn_id = turn.id INNER JOIN campus ON user.campus_id = campus_id WHERE comission IN ('A' , 'B') ");
 
 //Check if the user is still login
 if ($session->GetSessionValue('valid') != 'valid') {
@@ -128,16 +113,16 @@ if ($session->GetSessionValue('permission') < 2) {
                     if ($_GET["year"] != null) {
                         $year = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "year"));
 
-                        $query = $query . " AND YEAR(U.date) =" . $year;
+                        $query = $query . " AND YEAR(user.date) =" . $year;
                     }
 
                     if ($_GET["cuatrimestre"] != null) {
                         $cuatrimestre = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "cuatrimestre"));
 
-                        $query = $query . " AND CASE  when MONTH(U.date) > 8 then 2 when MONTH(U.date) > 1 then 1 END =" . $cuatrimestre;
+                        $query = $query . " AND CASE  when MONTH(user.date) > 8 then 2 when MONTH(user.date) > 1 then 1 END =" . $cuatrimestre;
                     }
 
-                    $query = $query . " ORDER BY U.date DESC";
+                    $query = $query . " GROUP BY campus.id , campus.name , YEAR(user.date) , turn.name , comission , CASE WHEN MONTH(user.date) > 8 THEN 2 WHEN MONTH(user.date) > 1 THEN 1 END , user.year , turn.id ORDER BY campus.id";
 
                     $rs = $dbSetting->ExecuteQuery($query);
 
@@ -197,22 +182,5 @@ if ($session->GetSessionValue('permission') < 2) {
     </div>
 
 </div>
-
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-10081016-2']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
 </body>
 </html>

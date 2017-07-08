@@ -70,11 +70,15 @@ define('__QUERY_GET_ALL_COURSE_PEOPLE_BY_FILTERS__', "SELECT U.id,
                 <div>Año</div>
                 <div>
                     <select id="year" class="textbox">
-                        <option>2011</option>
-                        <option>2012</option>
-                        <option>2013</option>
-                        <option>2014</option>
-                        <option>2015</option>
+                        <option value="2011" <?php echo ($_GET['year'] == '2011' ? 'selected' : ''); ?>>2011</option>
+                        <option value="2012" <?php echo ($_GET['year'] == '2012' ? 'selected' : ''); ?>>2012</option>
+                        <option value="2013" <?php echo ($_GET['year'] == '2013' ? 'selected' : ''); ?>>2013</option>
+                        <option value="2014" <?php echo ($_GET['year'] == '2014' ? 'selected' : ''); ?>>2014</option>
+                        <option value="2015" <?php echo ($_GET['year'] == '2015' ? 'selected' : ''); ?>>2015</option>
+                        <option value="2016" <?php echo ($_GET['year'] == '2016' ? 'selected' : ''); ?>>2016</option>
+                        <option value="2017" <?php echo ($_GET['year'] == '2017' ? 'selected' : ''); ?>>2017</option>
+                        <option value="2018" <?php echo ($_GET['year'] == '2018' ? 'selected' : ''); ?>>2018</option>
+                        <option value="2019" <?php echo ($_GET['year'] == '2019' ? 'selected' : ''); ?>>2019</option>
                     </select>
                 </div>
             </td>
@@ -82,8 +86,11 @@ define('__QUERY_GET_ALL_COURSE_PEOPLE_BY_FILTERS__', "SELECT U.id,
                 <div>Año de cursada</div>
                 <div>
                     <select id="year_coursed" class="textbox">
-                        <option>4</option>
-                        <option>5</option>
+                        <option value="1" <?php echo ($_GET['year_coursed'] == '1' ? 'selected' : ''); ?>>1</option>
+                        <option value="2" <?php echo ($_GET['year_coursed'] == '2' ? 'selected' : ''); ?>>2</option>
+                        <option value="3" <?php echo ($_GET['year_coursed'] == '3' ? 'selected' : ''); ?>>3</option>
+                        <option value="4" <?php echo ($_GET['year_coursed'] == '4' ? 'selected' : ''); ?>>4</option>
+                        <option value="5" <?php echo ($_GET['year_coursed'] == '5' ? 'selected' : ''); ?>>5</option>
                     </select>
                 </div>
             </td>
@@ -91,17 +98,17 @@ define('__QUERY_GET_ALL_COURSE_PEOPLE_BY_FILTERS__', "SELECT U.id,
                 <div>Comisión</div>
                 <div>
                     <select id="comission" class="textbox">
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>E</option>
-                        <option>F</option>
-                        <option>G</option>
-                        <option>H</option>
-                        <option>I</option>
-                        <option>J</option>
-                        <option>K</option>
+                        <option value="A" <?php echo ($_GET['comission'] == 'A' ? 'selected' : ''); ?>>A</option>
+                        <option value="B" <?php echo ($_GET['comission'] == 'B' ? 'selected' : ''); ?>>B</option>
+                        <option value="C" <?php echo ($_GET['comission'] == 'C' ? 'selected' : ''); ?>>C</option>
+                        <option value="D" <?php echo ($_GET['comission'] == 'D' ? 'selected' : ''); ?>>D</option>
+                        <option value="E" <?php echo ($_GET['comission'] == 'E' ? 'selected' : ''); ?>>E</option>
+                        <option value="F" <?php echo ($_GET['comission'] == 'F' ? 'selected' : ''); ?>>F</option>
+                        <option value="G" <?php echo ($_GET['comission'] == 'G' ? 'selected' : ''); ?>>G</option>
+                        <option value="H" <?php echo ($_GET['comission'] == 'H' ? 'selected' : ''); ?>>H</option>
+                        <option value="I" <?php echo ($_GET['comission'] == 'I' ? 'selected' : ''); ?>>I</option>
+                        <option value="J" <?php echo ($_GET['comission'] == 'J' ? 'selected' : ''); ?>>J</option>
+                        <option value="K" <?php echo ($_GET['comission'] == 'K' ? 'selected' : ''); ?>>K</option>
                     </select>
                 </div>
             </td>
@@ -242,22 +249,5 @@ define('__QUERY_GET_ALL_COURSE_PEOPLE_BY_FILTERS__', "SELECT U.id,
     </div>
 
 </div>
-
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-10081016-2']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
 </body>
 </html>
