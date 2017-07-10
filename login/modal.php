@@ -6,14 +6,27 @@
         <h4 class="modal-title" id="modal-loginLabel">Ingresar</h4>
       </div>
       <div class="modal-body">
-        <div class="alert alert-danger">
-          <ul>
-            <li>Escriba un <b>email</b>.</li>
-            <li>Escriba la <b>contraseña</b>.</li>
-            <li>El <b>email</b> o <b>contraseña</b> ingresados son incorrectos.</li>
-            <li>El <b>usuario</b> no ha sido verificado por un docente.</li>
-          </ul>
-        </div>
+        <?php if (!empty(filter_input(INPUT_GET, 'error'))): ?>
+          <script>$('#modal-login').modal('show');</script>
+          <div class="alert alert-danger">
+            <ul>
+              <?php
+                switch (filter_input(INPUT_GET, 'error')) {
+                  case 'invalid': 
+                    ?>
+                    <li>El <b>email</b> o <b>contraseña</b> ingresados son incorrectos.</li>
+                    <?php
+                    break;
+                  case 'not-registered':
+                    ?>
+                    <li>El <b>usuario</b> no ha sido verificado por un docente.</li>
+                    <?php
+                    break;
+                }
+              ?>
+            </ul>
+          </div>
+        <?php endif ?>
         <form action="/login/login.php" method="post">
           <div class="form-group">
             <label for="input-email">Email</label>
