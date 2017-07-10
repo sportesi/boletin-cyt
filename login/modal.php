@@ -6,6 +6,14 @@
         <h4 class="modal-title" id="modal-loginLabel">Ingresar</h4>
       </div>
       <div class="modal-body">
+        <div class="alert alert-danger">
+          <ul>
+            <li>Escriba un <b>email</b>.</li>
+            <li>Escriba la <b>contraseña</b>.</li>
+            <li>El <b>email</b> o <b>contraseña</b> ingresados son incorrectos.</li>
+            <li>El <b>usuario</b> no ha sido verificado por un docente.</li>
+          </ul>
+        </div>
         <form action="/" method="post">
           <div class="form-group">
             <label for="input-email">Email</label>
