@@ -14,7 +14,7 @@
             <li>El <b>usuario</b> no ha sido verificado por un docente.</li>
           </ul>
         </div>
-        <form action="/" method="post">
+        <form action="/login/login.php" method="post">
           <div class="form-group">
             <label for="input-email">Email</label>
             <input type="email" class="form-control" name="email" id="input-email" placeholder="Email">
