@@ -7,10 +7,10 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
 
 try 
 {
-    $firstname = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "first_name"));
-    $lastname  = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "last_name"));
-    $turn_id   = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "turn_id"));
-    $campus_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "campus_id"));
+    $firstname = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "name"));
+    $lastname  = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "lastName"));
+    $turn_id   = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "turns"));
+    $campus_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "campus"));
     $email     = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "email"));
     $comission = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "comission"));
     $year      = DBInformation::mysql_escape_mimic(filter_input(INPUT_POST, "year"));
@@ -43,7 +43,7 @@ try
     }
     /* Fin Validacion de usuario */
 
-    $query = "INSERT INTO user (turn_id, campus_id, permission_id, year, firstname, lastname, password, email, comission, validated, date )
+    $query = "INSERT INTO user (turn_id, campus_id, permission_id, year, firstname, lastname, password, email, comission, validated, date)
               VALUES ([0],[1],[2],[3],'[4]','[5]','[6]','[7]','[8]',[9],[10])";
 
     $query = $dbSetting->ReplaceParameter($query, '[0]',  $turn_id);
@@ -60,7 +60,7 @@ try
 
     $dbSetting->ExecuteQuery($query);
 
-    header('Location: /');
+    header('Location: /?register_success=true');
 } 
 catch (Exception $e) 
 {

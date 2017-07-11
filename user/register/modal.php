@@ -6,22 +6,38 @@
         <h4 class="modal-title" id="modal-registerLabel">Registrarse</h4>
       </div>
       <div class="modal-body">
+        <?php if (filter_input(INPUT_GET, 'error_register')): ?>
+          <script>$('#modal-register').modal('show');</script>
+          <div class="alert alert-danger">
+            <?php
+              switch (filter_input(INPUT_GET, 'error_register')) {
+                case 'duplicated':
+                  ?><p>Por favor revise sus datos, puede que el email ya esté en uso.</p><?php
+                  break;
+                
+                default:
+                  ?><p>Por favor revise sus datos.</p><?php
+                  break;
+              }
+            ?>
+          </div>
+        <?php endif ?>
         <form action="/user/register/register.php" method="post">
           <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" placeholder="Nombre" name="name">
+            <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" required>
           </div>
           <div class="form-group">
             <label for="lastName">Apellido</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Apellido" name="lastName">
+            <input type="text" class="form-control" id="lastName" placeholder="Apellido" name="lastName" required>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
           </div>
           <div class="form-group">
             <label for="campus">Localización</label>
-            <select id="campus" class="form-control" name="campus">
+            <select id="campus" class="form-control" name="campus" required>
               <option value="8">Boulogne</option>
               <option value="4">Castelar</option>
               <option value="1">Centro</option>
@@ -31,7 +47,7 @@
           </div>
           <div class="form-group">
             <label for="turns">Turno</label>
-            <select id="turns" class="form-control" name="turns">
+            <select id="turns" class="form-control" name="turns" required>
               <option value="1">TM</option>
               <option value="2">TT</option>
               <option value="3">TN</option>
@@ -39,7 +55,7 @@
           </div>
           <div class="form-group">
             <label for="comission">Comisión</label>
-            <select id="comission" class="form-control" name="comission">
+            <select id="comission" class="form-control" name="comission" required>
 							<option>A</option>
 							<option>B</option>
 							<option>C</option>
@@ -55,7 +71,7 @@
           </div>
           <div class="form-group">
             <label for="year">Año</label>
-            <select id="year" class="form-control" name="year">
+            <select id="year" class="form-control" name="year" required>
               <option>1</option>
               <option>2</option>
               <option>3</option>

@@ -8,6 +8,17 @@
 ?>
 <?php $sectionName = ($categoryName) ?: 'Últimas Noticias'; ?>
 <div class="section-header">
+  <?php if (filter_input(INPUT_GET, 'register_success') === 'true'): ?>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p>Gracias por registrarte en el <b>Boletín Científico - Tecnológico</b> de la <b>UAI</b></p>
+          <p>Cuando un profesor valide tus datos, vas a poder publicar en este sitio.</p>
+        </div>
+      </div>
+    </div>
+  <?php endif ?>
   <div class="row">
     <div class="col-md-9">
       <h3><?php echo $sectionName; ?></h3>
