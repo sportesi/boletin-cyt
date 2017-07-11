@@ -20,7 +20,7 @@
             <input type="email" class="form-control" id="email" placeholder="Email" name="email">
           </div>
           <div class="form-group">
-            <label for="lastName">Localización</label>
+            <label for="campus">Localización</label>
             <select id="campus" class="form-control" name="campus">
               <option value="8">Boulogne</option>
               <option value="4">Castelar</option>
@@ -30,7 +30,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="lastName">Turno</label>
+            <label for="turns">Turno</label>
             <select id="turns" class="form-control" name="turns">
               <option value="1">TM</option>
               <option value="2">TT</option>
@@ -38,7 +38,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="lastName">Comisión</label>
+            <label for="comission">Comisión</label>
             <select id="comission" class="form-control" name="comission">
 							<option>A</option>
 							<option>B</option>
@@ -54,7 +54,7 @@
 							</select>
           </div>
           <div class="form-group">
-            <label for="lastName">Año</label>
+            <label for="year">Año</label>
             <select id="year" class="form-control" name="year">
               <option>1</option>
               <option>2</option>
