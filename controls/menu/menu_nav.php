@@ -22,8 +22,8 @@
               Configuración de Usuario <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="/user/update/index.php">Actualizar Datos</a></li>
-              <li><a href="/user/change_password/index.php">Cambiar Contraseña</a></li>
+              <li><a role="button" data-toggle="modal" data-target="#modal-update-user">Actualizar Datos</a></li>
+              <li><a role="button" data-toggle="modal" data-target="#modal-change-password">Cambiar Contraseña</a></li>
             </ul>
           </li>
 

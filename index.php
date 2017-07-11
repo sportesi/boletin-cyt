@@ -40,14 +40,14 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
         </div>
       </div>
       <!-- End Header and Navbar -->
-      <!-- News -->
+      <!-- Noticias -->
       <div class="col-md-9">
         <div id="news">
           <?php require_once 'news/index_view.php'; ?>
         </div>
         <?php require_once 'controls/php-pagination/widget.php'; ?>
       </div>
-      <!-- End News -->
+      <!-- Fin Noticias -->
       <!-- Sidebar  -->
       <div class="col-md-3 text-center">
         <div class="panel panel-info">
@@ -67,13 +67,18 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
           </div>
         </div>
       </div>
-      <!-- End Sidebar -->
+      <!-- Fin Sidebar -->
       <!-- Modal Login -->
       <?php require_once 'login/modal.php'; ?>
-      <!-- End Modal Login -->
+      <!-- Fin Modal Login -->
       <!-- Modal Register -->
       <?php require_once 'user/register/modal.php'; ?>
-      <!-- End Modal Register -->
+      <!-- Fin Modal Registracion -->
+      <?php if ($session->GetSessionValue('valid') == 'valid'): ?>
+        <!-- Modales Configuracion de Usuario -->
+          <?php require_once 'user/update/modal.php'; ?>
+        <!-- Fin Modales Configuracion de Usuario -->
+      <?php endif ?>
     </div>
   </div>
 </body>
