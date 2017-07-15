@@ -75,13 +75,13 @@ for ($x = 0, $numrows = mysql_num_rows($rs); $x < $numrows; $x++) {
             </p>
             <div class="text-center">
               <?php if (!empty($data['link_1'])): ?>
-                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=1" class="btn btn-info btn-sm">Nota Completa</a>
+                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=1" class="btn btn-info btn-sm" target="_blank">Nota Completa</a>
               <?php endif; ?>
               <?php if (!empty($data['link_2'])): ?>
-                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=2" class="btn btn-info btn-sm">Relacionado</a>
+                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=2" class="btn btn-info btn-sm" target="_blank">Relacionado</a>
               <?php endif; ?>
               <?php if (!empty($data['link_3'])): ?>
-                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=3" class="btn btn-info btn-sm">Formato PDF</a>
+                <a href="/news/preview/preview.php?news_id=<?php echo $data['id']; ?>&link=3" class="btn btn-info btn-sm" target="_blank">Formato PDF</a>
               <?php endif; ?>
             </div>
           </div>
