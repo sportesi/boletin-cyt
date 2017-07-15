@@ -349,3 +349,20 @@ select
 	color: #5f95ef;
 	padding: 0px 15px;
 }
+
+.carousel img {
+    width: 100%;
+}
+
+.carousel .item {
+    max-height: 35vh;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+.carousel {
+	margin-bottom: 2%;
+}

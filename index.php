@@ -40,6 +40,11 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
         </div>
       </div>
       <!-- End Header and Navbar -->
+      <!-- Slider Noticias Top -->
+      <div class="col-md-12">
+        <?php require_once 'controls/slider/widget.php'; ?>
+      </div>
+      <!-- Fin Slider Noticias Top -->
       <!-- Noticias -->
       <div class="col-md-9">
         <div id="news">
