@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+        <li><a href="/">Últimas Noticias</a></li>
         <li><a href="/news/top/">Noticias Top</a></li>
         <?php $query_str = "?year=" . date('Y') . "&cuatrimestre=" . ((date('m') > 8) ? 2 : 1); ?>
         <?php if ($session->GetSessionValue('valid') == 'valid'): ?>
