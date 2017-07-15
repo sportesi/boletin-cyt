@@ -18,7 +18,7 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
   <meta name="keywords"
   content="Software, Seguridad Informatica, Salud , Robótica e Inteligenia Artificial,Politicas y Ética, Periféricos y Auxiliares, Otros, Nanotecnologia, Matematica y Lógica, IT & Infraestuctura Informatica, Fuentes RRS varias, Fisica y Quimica, Comunicaciones, Computación Cuantica, Circuitos Integrados, Almacenamiento y Memorias "/>
 
-  <title>EES - UAI - BOLETIN</title>
+  <title>UAI - Boletín Científico - Tecnológico</title>
 
   <script type="text/javascript" language="JavaScript" src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js" > </script>
