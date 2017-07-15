@@ -18,7 +18,9 @@
   <div class="carousel-inner" role="listbox">
     <?php while ($row = mysql_fetch_assoc($rs)) { ?>
       <div class="item <?php echo $firstRow ? 'active' : '' ?>">
-        <img src="<?php echo $row['image_url'] ?>">
+        <a href="<?php echo $row['link_1'] ?>">
+          <img src="<?php echo $row['image_url'] ?>">
+        </a>
         <div class="carousel-caption">
           <?php echo $row['title'] ?>
         </div>
