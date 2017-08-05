@@ -37,6 +37,7 @@
                         <p>Te sugerimos cambiar tu contraseña por razones de seguridad.</p>
                     </div>
                 <?php endif; ?>
+                
                 <?php if (filter_input(INPUT_GET, 'change-password') === 'wrong-password'): ?>
                     <div class="alert alert-danger">
                         <p>Tu <b>contraseña</b> anterior es incorrecta.</p>
