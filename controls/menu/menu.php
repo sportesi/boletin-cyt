@@ -35,7 +35,7 @@ function CrearMenu($session)
 		$str = $str .  '<li><a href="#">Configuración de Usuario</a>';
 		$str = $str .  '<ul>';
 		$str = $str .  '<li><a href="' .$site .'/user/update/index.php">Actualizar datos</a></li>';
-		$str = $str .  '<li><a href="'. $site .'/user/change_password/index.php">Cambiar Password</a></li>';
+		$str = $str .  '<li><a href="'. $site .'/user/change-password/index.php">Cambiar Password</a></li>';
 		$str = $str .  '</ul>';
 		$str = $str .  '</li>';
 		
