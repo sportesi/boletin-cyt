@@ -20,9 +20,9 @@ require_once __ROOT__ . '/common/DataAccess/DBSecurityConnections.php';
 
   <title>UAI - Boletín Científico - Tecnológico</title>
 
-  <script type="text/javascript" language="JavaScript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js" > </script>
-  <script type="text/javascript" language="JavaScript" src="/scripts/home/home.js"></script>
+  <script type="text/javascript" src="/scripts/home/home.js"></script>
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style/css/general.css" media="screen"/>
