@@ -52,10 +52,11 @@ try
         $_SESSION['valid'] = 'valid';
         $_SESSION['permission'] = $row["permission_id"];
         $_SESSION['user_id'] = $row["id"];
+        $_SESSION['change-password'] = false;
 
         if ($row["password"] == '123456')
         {
-            throw new Exception("change-password");
+            $_SESSION['change-password'] = true;
         }
 
         header('Location: /');
