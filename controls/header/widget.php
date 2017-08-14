@@ -35,7 +35,7 @@ if ($categoryIdName) {
     <?php endif ?>
     <div class="row">
         <div class="col-md-9">
-            <h3><?php echo $sectionName; ?></h3>
+            <h3><?php echo !isset($sectionOverride) ? $sectionName : $sectionOverride; ?></h3>
         </div>
         <div class="col-md-3" style="padding-right: 0;">
             <img src="/style/images/uai-vertical.png" style="width: 100%;" id="Logo UAI"/><br/>

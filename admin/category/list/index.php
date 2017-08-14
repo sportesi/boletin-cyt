@@ -17,6 +17,9 @@ if ($session->GetSessionValue('valid') != 'valid') {
 if ($session->GetSessionValue('permission') < 2) {
     header('location:../../login/index.php');
 }
+
+$sectionOverride = 'Categorías: Listado';
+
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -42,76 +45,77 @@ if ($session->GetSessionValue('permission') < 2) {
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/scripts/home/home.js"></script>
+    <script type="text/javascript" src="/node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/node_modules/datatables.net-bs/js/dataTables.bootstrap.js"></script>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/style/css/general.css" media="screen"/>
+    <link rel="stylesheet" href="/node_modules/datatables.net-bs/css/dataTables.bootstrap.css">
 </head>
 
 <body>
-
-<div class="container">
-    <div class="row">
-        <!-- Header and Navbar -->
-        <div class="col-md-12">
-            <div class="page-header">
-                <?php require_once '../../../controls/menu/menu_nav.php'; ?>
-                <?php require_once '../../../controls/header/widget.php'; ?>
+    <div class="container">
+        <div class="row">
+            <!-- Header and Navbar -->
+            <div class="col-md-12">
+                <div class="page-header">
+                    <?php require_once '../../../controls/menu/menu_nav.php'; ?>
+                    <?php require_once '../../../controls/header/widget.php'; ?>
+                </div>
             </div>
-        </div>
-        <!-- End Header and Navbar -->
-        <div>
-            <div id="container">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                        <th>Borrar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
+            <!-- End Header and Navbar -->
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th class="text-center">Cambiar Estado</th>
+                                <th class="text-center">Borrar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $rs = $dbSetting->ExecuteQuery(__QUERY_GET_ALL_CATEGORIES_ORDER_BY_NAME__); ?>
 
-                    try {
-                        $rs = $dbSetting->ExecuteQuery(__QUERY_GET_ALL_CATEGORIES_ORDER_BY_NAME__);
-
-                        while ($row = mysql_fetch_assoc($rs)) {
-                            echo "<tr class='center'>" .
-                                "<td class='center'> {$row['name']} </td>" .
-                                "<td class='center'> <input id='button_change_{$row['id']}' type='button' value='" . GetButtonDescription($row["status"]) . "' onclick='ChangeStatus(" . $row['id'] . "," . GetStatus($row['status']) . ")' style='width:150px;' /> </td>" .
-                                "<td class='center'> <input id='button_delete_{$row['id']}' type='button' value='Borrar' onclick='Delete(" . $row['id'] . ")' style='width:150px;'/>" . "</tr>";
-                        }
-
-                    } catch (Exception $e) {
-                        echo $e;
-                    }
-
-
-                    function GetButtonDescription($status)
-                    {
-                        if ($status == 0) {
-                            return "Habilitar";
-                        }
-                        {
-                            return "Desabilitar";
-                        }
-                    }
-
-                    function GetStatus($status)
-                    {
-                        if ($status == 0) {
-                            return 1;
-                        } else {
-                            return 0;
-                        }
-                    }
-
-                    ?>
-                    </tbody>
-                </table>
+                            <?php while ($row = mysql_fetch_assoc($rs)): ?>
+                                <tr class='center'>
+                                    <td><?php echo $row['name']; ?></td>
+                                    <td class='text-center'>
+                                        <input id='button_change_<?php echo $row['id']; ?>'
+                                               type='button'
+                                               value='<?php echo !$row["status"] ? 'Habilitar' : 'Deshabilitar' ?>'
+                                               onclick='ChangeStatus("<?php echo $row['id']; ?>", "<?php echo !$row['status'] ? 1 : 0; ?>")'
+                                               style='width:150px;'/>
+                                    </td>
+                                    <td class='text-center'>
+                                        <input id='button_delete_<?php echo $row['id']; ?>'
+                                               type='button'
+                                               value='Borrar'
+                                               onclick='Delete("<?php echo $row['id']; ?>")'
+                                               style='width:150px;'/>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table').dataTable({
+                searching: false,
+                ordering: false,
+                lengthChange: false,
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
