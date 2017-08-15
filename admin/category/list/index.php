@@ -44,7 +44,6 @@ $sectionOverride = 'Categorías: Listado';
 
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/scripts/home/home.js"></script>
     <script type="text/javascript" src="/node_modules/datatables.net/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="/node_modules/datatables.net-bs/js/dataTables.bootstrap.js"></script>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -71,8 +70,7 @@ $sectionOverride = 'Categorías: Listado';
                             <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th class="text-center">Cambiar Estado</th>
-                                <th class="text-center">Borrar</th>
+                                <th class="text-right">Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -81,19 +79,14 @@ $sectionOverride = 'Categorías: Listado';
                             <?php while ($row = mysql_fetch_assoc($rs)): ?>
                                 <tr class='center'>
                                     <td><?php echo $row['name']; ?></td>
-                                    <td class='text-center'>
-                                        <input id='button_change_<?php echo $row['id']; ?>'
-                                               type='button'
-                                               value='<?php echo !$row["status"] ? 'Habilitar' : 'Deshabilitar' ?>'
-                                               onclick='ChangeStatus("<?php echo $row['id']; ?>", "<?php echo !$row['status'] ? 1 : 0; ?>")'
-                                               style='width:150px;'/>
-                                    </td>
-                                    <td class='text-center'>
-                                        <input id='button_delete_<?php echo $row['id']; ?>'
-                                               type='button'
-                                               value='Borrar'
-                                               onclick='Delete("<?php echo $row['id']; ?>")'
-                                               style='width:150px;'/>
+                                    <td class='text-right'>
+                                        <div class="">
+                                            <a href="#<?php echo $row['id']; ?>" class="btn btn-success btn-xs">
+                                                <?php echo !$row["status"] ? 'Habilitar' : 'Deshabilitar' ?>
+                                            </a>
+                                            <a role="button" onclick="OpenModalEdit('<?php echo $row['name']; ?>', '<?php echo $row['id']; ?>');" class="btn btn-default btn-xs">Editar</a>
+                                            <a href="#<?php echo $row['id']; ?>" class="btn btn-danger btn-xs">Borrar</a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endwhile; ?>
@@ -104,6 +97,30 @@ $sectionOverride = 'Categorías: Listado';
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal-edit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Editar Categoría</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" role="form">
+                        <div class="form-group">
+                            <input type="hidden" name="category_id">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre">
+                        </div>
+                    </form>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Editar Categoría</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('table').dataTable({
@@ -115,6 +132,12 @@ $sectionOverride = 'Categorías: Listado';
                 }
             });
         });
+
+        function OpenModalEdit(name, id) {
+            $('#modal-edit input[name="name"]').val(name);
+            $('#modal-edit input[name="category_id"]').val(id);
+            $('#modal-edit').modal('show');
+        }
     </script>
 </body>
 
