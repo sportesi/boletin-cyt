@@ -135,7 +135,7 @@ $(function(){
 	
 	if(news_id > 0)
 	{
-		var newsUrl = "/news/operation.php?operation=news&id=" + news_id;
+		var newsUrl = "/news/validate.php?operation=news&id=" + news_id;
 		
 		$.getJSON(newsUrl, function(data) 
 		{
@@ -179,7 +179,7 @@ $(function(){
 		 {
 			var ajaxOpts = {
 					type: "get",
-					url: "/news/create/operation.php?operation=update",
+					url: "/news/create/validate.php?operation=update",
 					data: "&id=" + getParameterByName('id') + "&title=" + title.replace(/<.*?>/g, '') + "&subtitle=" + subtitle.replace(/<.*?>/g, '') + "&summary=" + summary.replace(/<.*?>/g, '') + "&subsummary=" + subsummary.replace(/<.*?>/g, '') + "&category=" + category + "&image_url=" + image_url + "&image_comment=" + image_comment.replace(/<.*?>/g, '') + "&link_1=" + link_1 + "&link_2=" + link_2 + "&link_3=" + link_3,
 					success: function(data) {
 						location.href = "/news/list/";									

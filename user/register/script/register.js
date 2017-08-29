@@ -98,7 +98,7 @@ $(function(){
 		 var comission = encodeURI($("#comission :selected").text());
 		 var year = encodeURI($("#year :selected").text());
 		
-		$.getJSON('/user/operation.php?operation=verify&email=' + email, function(data){ // grab content from another page
+		$.getJSON('/user/validate.php?operation=verify&email=' + email, function(data){ // grab content from another page
 			
 			$("#exist_user_div").hide();
 			$("#done_div").hide();
@@ -107,7 +107,7 @@ $(function(){
 			{
 				var ajaxOpts = {
 					type: "get",
-					url: "/user/operation.php?operation=save",
+					url: "/user/validate.php?operation=save",
 					data: "&first_name=" + first_name.replace(/<.*?>/g, '') + "&last_name=" + last_name.replace(/<.*?>/g, '') + "&email=" + email.toLowerCase() + "&campus_id=" + campus_id + "&turn_id=" + turn_id + "&comission=" + comission + "&year=" + year,
 					success: function(data) {
 						$("#done_div").show("slow");

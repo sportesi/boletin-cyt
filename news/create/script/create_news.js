@@ -139,7 +139,7 @@ $(function(){
 		 
 		var ajaxOpts = {
 					type: "get",
-					url: "operation.php?operation=save",
+					url: "validate.php?operation=save",
 					data: "&title=" + title + "&subtitle=" + subtitle.replace(/<.*?>/g, '') + "&summary=" + summary.replace(/<.*?>/g, '') + "&subsummary=" + subsummary.replace(/<.*?>/g, '') + "&category=" + category + "&image_url=" + image_url + "&image_comment=" + image_comment.replace(/<.*?>/g, '') + "&link_1=" + link_1 + "&link_2=" + link_2 + "&link_3=" + link_3,
 					success: function(data) 
 					{

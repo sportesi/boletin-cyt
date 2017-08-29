@@ -22,7 +22,7 @@ $(function(){
 		offset = getParameterByName("offset");
 	}
 				
-	var countUrl = "../../../../news/operation.php?operation=count_news";
+	var countUrl = "../../../../news/validate.php?operation=count_news";
 				
 	$.getJSON(countUrl, function(data) 
 	{
@@ -44,7 +44,7 @@ $(function(){
         $("#pages_numbers").html(links);			
 	});	
 				
-	var newsUrl = "../../../../news/operation.php?operation=news";
+	var newsUrl = "../../../../news/validate.php?operation=news";
 				
 	if(offset != '')
 	{
@@ -197,7 +197,7 @@ $(function(){
 			var ajaxOpts = {
 							type: "get",
 							dataType: 'json',
-							url: "../../../../news/operation.php?operation=delete",
+							url: "../../../../news/validate.php?operation=delete",
 							data: "&news_id=" + news_id,
 							success: function(data) {
 								location.href = 'index.php';

@@ -64,7 +64,7 @@ $(document).ready(function()
 
 	function Delete(user_id)
 	{
-			var url = "/admin/users/validate/operation.php?operation=delete&user_id=" + user_id;
+			var url = "/admin/users/validate/validate.php?operation=delete&user_id=" + user_id;
 			
 			var value = confirm("¿Esta seguro que desea eliminar el alumno?");
 			if(value == true)
@@ -91,7 +91,7 @@ $(document).ready(function()
 		
 	function Reset(user_id)
 	{
-			var url = "/admin/users/validate/operation.php?operation=reset&user_id=" + user_id;
+			var url = "/admin/users/validate/validate.php?operation=reset&user_id=" + user_id;
 			
 			var value = confirm("¿Esta seguro que desea resetear la clave?");
 			if(value == true)
