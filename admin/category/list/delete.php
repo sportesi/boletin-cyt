@@ -7,7 +7,7 @@ require_once(__ROOT__ . '/common/DataAccess/DBSecurityConnections.php');
 
 try {
     $category_id = DBInformation::mysql_escape_mimic(filter_input(INPUT_GET, "id"));
-    $query = "DELETE FROM category WHERE id = {$category_id}";
+    $query = "UPDATE category SET deleted = 1 WHERE id = {$category_id}";
     $rs = $dbSetting->ExecuteQuery($query);
     header('Location: /admin/category/list/?updated=true');
 } catch (Exception $exception) {
