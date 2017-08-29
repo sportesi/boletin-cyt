@@ -73,6 +73,9 @@ $sectionOverride = 'Categorías: Listado';
             <?php endif ?>
 
             <div class="panel panel-default">
+                <div class="panel-heading text-right">
+                    <button onclick="OpenModalCreate();" class="btn btn-primary">Crear Categoría</button>
+                </div>
                 <div class="panel-body">
                     <table class="table">
                         <thead>
@@ -133,6 +136,29 @@ $sectionOverride = 'Categorías: Listado';
     </div>
 </div>
 
+<div class="modal fade" id="modal-create">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Crear Categoría</h4>
+            </div>
+            <div class="modal-body">
+                <form action="./create.php" method="POST" role="form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre">
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Crear Categoría</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('table').dataTable({
@@ -155,6 +181,11 @@ $sectionOverride = 'Categorías: Listado';
         $('#modal-edit input[name="name"]').val(name);
         $('#modal-edit input[name="category_id"]').val(id);
         $('#modal-edit').modal('show');
+    }
+
+    function OpenModalCreate() {
+        $('#modal-create').find('form')[0].reset();
+        $('#modal-create').modal('show');
     }
 </script>
 </body>
