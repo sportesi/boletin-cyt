@@ -53,92 +53,110 @@ $sectionOverride = 'Categorías: Listado';
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <!-- Header and Navbar -->
-            <div class="col-md-12">
-                <div class="page-header">
-                    <?php require_once '../../../controls/menu/menu_nav.php'; ?>
-                    <?php require_once '../../../controls/header/widget.php'; ?>
-                </div>
+<div class="container">
+    <div class="row">
+        <!-- Header and Navbar -->
+        <div class="col-md-12">
+            <div class="page-header">
+                <?php require_once '../../../controls/menu/menu_nav.php'; ?>
+                <?php require_once '../../../controls/header/widget.php'; ?>
             </div>
-            <!-- End Header and Navbar -->
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th class="text-right">Acciones</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $rs = $dbSetting->ExecuteQuery(__QUERY_GET_ALL_CATEGORIES_ORDER_BY_NAME__); ?>
+        </div>
+        <!-- End Header and Navbar -->
+        <div class="col-md-12">
 
-                            <?php while ($row = mysql_fetch_assoc($rs)): ?>
-                                <tr class='center'>
-                                    <td><?php echo $row['name']; ?></td>
-                                    <td class='text-right'>
-                                        <div class="">
-                                            <a href="#<?php echo $row['id']; ?>" class="btn btn-success btn-xs">
-                                                <?php echo !$row["status"] ? 'Habilitar' : 'Deshabilitar' ?>
-                                            </a>
-                                            <a role="button" onclick="OpenModalEdit('<?php echo $row['name']; ?>', '<?php echo $row['id']; ?>');" class="btn btn-default btn-xs">Editar</a>
-                                            <a href="#<?php echo $row['id']; ?>" class="btn btn-danger btn-xs">Borrar</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endwhile; ?>
-                            </tbody>
-                        </table>
-                    </div>
+            <?php if ($_GET['updated'] === 'true'): ?>
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Categoría actualizada!</strong>
+                </div>
+            <?php endif ?>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th class="text-right">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $rs = $dbSetting->ExecuteQuery(__QUERY_GET_ALL_CATEGORIES_ORDER_BY_NAME__); ?>
+
+                        <?php while ($row = mysql_fetch_assoc($rs)): ?>
+                            <tr class='center'>
+                                <td><?php echo $row['name']; ?></td>
+                                <td class='text-right'>
+                                    <div class="">
+                                        <a href="./enable-disable.php?id=<?php echo $row['id']; ?>&st=<?php echo intval(!$row["status"]); ?>"
+                                           class="btn btn-success btn-xs">
+                                            <?php echo !$row["status"] ? 'Habilitar' : 'Deshabilitar' ?>
+                                        </a>
+                                        <a role="button"
+                                           onclick="OpenModalEdit('<?php echo $row['name']; ?>', '<?php echo $row['id']; ?>');"
+                                           class="btn btn-default btn-xs">Editar</a>
+                                        <a role="button" onclick="ask('./delete.php?id=<?php echo $row['id']; ?>');"
+                                           class="btn btn-danger btn-xs">Borrar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="modal-edit">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Editar Categoría</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="#" method="POST" role="form">
-                        <div class="form-group">
-                            <input type="hidden" name="category_id">
-                            <input type="text" class="form-control" name="name" placeholder="Nombre">
-                        </div>
-                    </form>
+<div class="modal fade" id="modal-edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Editar Categoría</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/category/list/update.php" method="POST" role="form">
+                    <div class="form-group">
+                        <input type="hidden" name="category_id">
+                        <input type="text" class="form-control" name="name" placeholder="Nombre">
+                    </div>
                     <div class="text-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Editar Categoría</button>
+                        <button type="submit" class="btn btn-primary">Editar Categoría</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('table').dataTable({
-                searching: false,
-                ordering: false,
-                lengthChange: false,
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                }
-            });
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('table').dataTable({
+            searching: false,
+            ordering: false,
+            lengthChange: false,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
         });
+    });
 
-        function OpenModalEdit(name, id) {
-            $('#modal-edit input[name="name"]').val(name);
-            $('#modal-edit input[name="category_id"]').val(id);
-            $('#modal-edit').modal('show');
+    function ask(url) {
+        if (confirm('¿Estas seguro de elimiar esta categoría?')) {
+            window.location.href = url;
         }
-    </script>
+    }
+
+    function OpenModalEdit(name, id) {
+        $('#modal-edit input[name="name"]').val(name);
+        $('#modal-edit input[name="category_id"]').val(id);
+        $('#modal-edit').modal('show');
+    }
+</script>
 </body>
 
 </html>
